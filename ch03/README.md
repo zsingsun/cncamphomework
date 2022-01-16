@@ -68,7 +68,7 @@
 
 5. 将镜像推送至 docker 官方镜像仓库
 
-   ``` 
+   ``` sh
    ➜  ~ sudo docker login
    Login Succeeded
    ➜  ~ sudo docker push fingerf/httpserver:1.0
