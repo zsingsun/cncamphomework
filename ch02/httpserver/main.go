@@ -20,7 +20,8 @@ func main() {
 	http.HandleFunc("/healthz", healthz)
 	err := http.ListenAndServe(":80", nil)
 	if err != nil {
-		fmt.Println("Http server error")
+		//fmt.Println("Http server error")
+		fmt.Println(err)
 		return
 	}
 }
@@ -28,7 +29,8 @@ func main() {
 func roothandler(w http.ResponseWriter, r *http.Request) {
 	rsp, err := http.Get(fmt.Sprintf("http://[%s]:80", r.Host))
 	if err != nil {
-		fmt.Println("Http server error")
+		//fmt.Println("Http server error")
+		fmt.Println(err)
 		return
 	}
 	io.WriteString(w, "VERSION:"+string(os.Getenv("VERSION"))+"\n")                            // 返回系统环境变量VERSION
