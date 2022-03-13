@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-server
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9000"
+      labels:
+        app: http-server
+    spec:
+      containers:
+        - name: my-httpserver
+          imagePullPolicy: Always
+          image: fingerf/http-server:1.1-metrics
+          ports:
+            - containerPort: 9000
